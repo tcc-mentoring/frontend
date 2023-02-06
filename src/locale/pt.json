@@ -1,0 +1,20 @@
+{
+    "createUser.firstName": "Nome",
+    "createUser.firstName.required": "Preenchimento de Nome é obrigatório",
+    "createUser.lastName": "Sobrenome",
+    "createUser.lastName.required": "Preenchimento de Sobrenome é obrigatório",
+    "createUser.email": "E-mail",
+    "createUser.email.required": "Preenchimento de E-mail é obrigatório",
+    "createUser.password": "Senha",
+    "createUser.password.required": "Preenchimento de Senha é obrigatório",
+    "createUser.password.matchPassword": "Senha e confirmação devem ser iguais",
+    "createUser.confirmPassword": "Confirme sua senha",
+    "createUser.confirmPassword.required": "Preenchimento de confirmação de senha é obrigatório",
+    "createUser.submit": "Criar usuário",
+    "uniqueMail": "Este e-mail já está cadastrado",
+    "passwordRequirements": "Sua senha deve conter ao menos 8 caracteres",
+    "mailRequirements": "Você deve preencher um e-mail válido",
+    "userCreationSuccess": "Usuário criado com sucesso",
+    "resourceNotFound": "Problemas com o servidor. Tente novamente mais tarde.",
+    "serverError": "Problemas com o servidor. Tente novamente mais tarde."
+}

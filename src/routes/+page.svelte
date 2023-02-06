@@ -1,0 +1,1 @@
+<a href="/register">Create new user</a>
