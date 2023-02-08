@@ -9,15 +9,15 @@
 
 <form method="POST" action="?/register" use:enhance>
 
-    <FormGroup inputName="firstName" labelSlug="createUser.firstName" error={form?.errors?.firstName}/>
+    <FormGroup name="firstName" labelSlug="createUser.firstName" error={form?.errors?.firstName} autocomplete="given-name"/>
 
-    <FormGroup inputName="lastName" labelSlug="createUser.lastName" error={form?.errors?.lastName}/>
+    <FormGroup name="lastName" labelSlug="createUser.lastName" error={form?.errors?.lastName} autocomplete="family-name"/>
 
-    <FormGroup inputName="email" labelSlug="createUser.email" error={form?.errors?.email} inputType="email" />
+    <FormGroup name="email" labelSlug="createUser.email" error={form?.errors?.email} type="email" autocomplete="email" />
 
-    <FormGroup inputName="password" labelSlug="createUser.password" error={form?.errors?.password} inputType="password" />
+    <FormGroup name="password" labelSlug="createUser.password" error={form?.errors?.password} type="password" autocomplete="new-password"/>
 
-    <FormGroup inputName="confirmPassword" labelSlug="createUser.confirmPassword" error={form?.errors?.confirmPassword} inputType="password" />
+    <FormGroup name="confirmPassword" labelSlug="createUser.confirmPassword" error={form?.errors?.confirmPassword} type="password" autocomplete="new-password" />
 
     <button type="submit">{$_("createUser.submit")}</button>
 
