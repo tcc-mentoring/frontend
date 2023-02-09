@@ -1,8 +1,8 @@
 import { BACKEND } from "$env/static/private";
-import { fail, json, type Actions } from "@sveltejs/kit";
+import { fail, json, redirect, type Actions } from "@sveltejs/kit";
 
 export const actions: Actions = {
-    register: async ({request}) => { 
+    register: async ({cookies, request}) => { 
         const formData = await request.formData();
         
         const email = formData.get("email");
@@ -53,12 +53,18 @@ export const actions: Actions = {
                     firstName,
                     lastName})
             })
-            console.log({fetchCreateUser})
-            if (fetchCreateUser.status === 201 ) {
-                return {success: true};
-            }
-    
+            
             const createUserResponse = await fetchCreateUser.json();
+            
+            if (fetchCreateUser.status === 201 ) {
+                cookies.set('session', createUserResponse.userAuthUUID, {
+                    path: '/',
+                    httpOnly: true,
+                    sameSite: 'strict',
+                    secure: process.env.NODE_ENV === 'production',
+                    maxAge: 60 * 60 * 24 * 7,
+                  });
+            }
     
             if (createUserResponse.statusCode === 400) {
                 return fail(400, {serverErrors: createUserResponse.message})
@@ -69,6 +75,6 @@ export const actions: Actions = {
             return fail(500, {serverErrors: ["serverError"]})
         }
 
-    
+        throw redirect(302, "/")
     }
 };
