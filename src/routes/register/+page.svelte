@@ -27,8 +27,6 @@
                 {$_(serverError)}
             </p>
         {/each}
-    {:else if form?.success}
-        {$_("userCreationSuccess")}
     {/if}
 
 </form>
