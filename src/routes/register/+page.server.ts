@@ -1,5 +1,5 @@
 import { BACKEND } from "$env/static/private";
-import { fail, json, redirect, type Actions } from "@sveltejs/kit";
+import { fail, redirect, type Actions } from "@sveltejs/kit";
 
 export const actions: Actions = {
     register: async ({cookies, request}) => { 
