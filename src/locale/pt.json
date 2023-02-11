@@ -11,10 +11,16 @@
     "createUser.confirmPassword": "Confirme sua senha",
     "createUser.confirmPassword.required": "Preenchimento de confirmação de senha é obrigatório",
     "createUser.submit": "Criar usuário",
+    "login.submit": "Login",
+    "login.email": "E-mail",
+    "login.email.required": "Preenchimento de E-mail é obrigatório",
+    "login.password": "Senha",
+    "login.password.required": "Preenchimento de Senha é obrigatório",
     "uniqueMail": "Este e-mail já está cadastrado",
     "passwordRequirements": "Sua senha deve conter ao menos 8 caracteres",
     "mailRequirements": "Você deve preencher um e-mail válido",
     "userCreationSuccess": "Usuário criado com sucesso",
     "resourceNotFound": "Problemas com o servidor. Tente novamente mais tarde.",
-    "serverError": "Problemas com o servidor. Tente novamente mais tarde."
+    "serverError": "Problemas com o servidor. Tente novamente mais tarde.",
+    "invalidCredentials": "E-mail e/ou senha incorretos. Verifique as informações e tente novamente."
 }
