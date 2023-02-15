@@ -1,0 +1,27 @@
+/* Pink Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --primary: #5F7470 !important;
+  --primary-hover: #889696 !important;
+  --primary-focus: #B8BDB5 !important;
+  --primary-inverse: #E0E2DB !important;  
+  --color: #131716!important;
+  --h1-color: #131716!important;
+  --h2-color: #303a38 !important;
+  --h3-color: #394643 !important;
+  --h4-color: #43514e!important;
+  --h5-color: #4c5d5a!important;
+  --h6-color: #566865 !important;
+}
+
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+}
+
+div :global(svg) {
+  font-size: 36px;
+}
