@@ -36,7 +36,7 @@ export const actions: Actions = {
             
             const loginResponse = await fetchLogin.json();
             
-            if (fetchLogin.status === 201 ) {
+            if (fetchLogin.ok) {
                 cookies.set('session', loginResponse.userAuthUUID, {
                     path: '/',
                     httpOnly: true,
@@ -48,8 +48,6 @@ export const actions: Actions = {
     
             if (loginResponse.statusCode === 400) {
                 return fail(400, {serverErrors: loginResponse.message})
-            } else if (loginResponse.statusCode === 404) {
-                return fail(400, {serverErrors: ["resourceNotFound"]})
             }
         } catch (err) {
             return fail(500, {serverErrors: ["serverError"]})

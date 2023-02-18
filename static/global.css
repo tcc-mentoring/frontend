@@ -26,3 +26,7 @@
 div :global(svg) {
   font-size: 36px;
 }
+
+body {
+  height: 100vh
+}
