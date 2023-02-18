@@ -16,13 +16,14 @@
 </script>
 
 <style>
-.page-content {
-    padding: 0 20px;
+.layout-content {
+    padding: 5px 20px;
+    margin-top: var(--nav-height);
 }
 </style>
 
 <Navbar />
 
-<div class="page-content">
+<div class="layout-content">
     <slot></slot>
 </div>

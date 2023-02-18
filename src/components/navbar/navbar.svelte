@@ -5,8 +5,13 @@
 
 <style>
     nav {
+        background: var(--primary-inverse);
         padding: 15px 20px;
-        height: 100px;
+        height: var(--nav-height);
+        position: fixed;
+        width: 100vw;
+        top: 0;
+        left: 0;
     }
 
     .inline-form-action {
