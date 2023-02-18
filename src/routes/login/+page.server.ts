@@ -1,23 +1,16 @@
 import { BACKEND } from "$env/static/private";
 import { fail, redirect, type Actions } from "@sveltejs/kit";
+import { validateLogin } from "../../validators/loginValidator";
 
 export const actions: Actions = {
     login: async ({cookies, request}) => { 
         const formData = await request.formData();
+
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+    
+        const errors = validateLogin({email, password})
         
-        const email = formData.get("email");
-        const password = formData.get("password");
-
-        const errors: Record<string, string> = {}
-
-        if (!password || typeof password !== "string") {
-            errors.password = "required";
-        }
-
-        if (!email || typeof email !== "string") {
-            errors.email = "required";
-        }
-
         if (Object.keys(errors).length > 0) {
             return fail(400, { errors });
         }

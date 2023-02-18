@@ -1,46 +1,23 @@
 import { BACKEND } from "$env/static/private";
 import { fail, redirect, type Actions } from "@sveltejs/kit";
+import { validateRegister } from "../../validators/registerValidator";
 
 export const actions: Actions = {
     register: async ({cookies, request}) => { 
         const formData = await request.formData();
         
-        const email = formData.get("email");
-        const password = formData.get("password");
-        const confirmPassword = formData.get("confirmPassword");
-        const firstName = formData.get("firstName");
-        const lastName = formData.get("lastName");
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+        const confirmPassword = formData.get("confirmPassword") as string;
+        const firstName = formData.get("firstName") as string;
+        const lastName = formData.get("lastName") as string;
 
-        const errors: Record<string, string> = {}
-
-        if (password !== confirmPassword) {
-            errors.password = "matchPassword";
-        }
-
-        if (!password || typeof password !== "string") {
-            errors.password = "required";
-        }
-
-        if (!confirmPassword || typeof confirmPassword !== "string") {
-            errors.confirmPassword = "required";
-        }
-
-        if (!email || typeof email !== "string") {
-            errors.email = "required";
-        }
-
-        if (!firstName || typeof firstName !== "string") {
-            errors.firstName = "required";
-        }
-
-        if (!lastName || typeof lastName !== "string") {
-            errors.lastName = "required";
-        }
+        const errors = validateRegister({email, password, confirmPassword, firstName, lastName});
 
         if (Object.keys(errors).length > 0) {
             return fail(400, { errors });
         }
-        
+
         try {
             const fetchCreateUser = await fetch(`${BACKEND}user`, {
                 method: "POST",
