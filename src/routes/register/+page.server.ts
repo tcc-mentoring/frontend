@@ -1,6 +1,13 @@
 import { BACKEND } from "$env/static/private";
 import { fail, redirect, type Actions } from "@sveltejs/kit";
 import { validateRegister } from "../../validators/registerValidator";
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async ({ locals }) => {
+  if (locals.user) {
+    throw redirect(302, '/')
+  }
+}
 
 export const actions: Actions = {
     register: async ({cookies, request}) => { 
@@ -40,7 +47,7 @@ export const actions: Actions = {
         } catch (err) {
             return fail(500, {serverErrors: ["serverError"]})
         }
-        
+
         throw redirect(302, "/login")
     }
 };
