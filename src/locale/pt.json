@@ -27,5 +27,6 @@
     "userCreationSuccess": "Usuário criado com sucesso",
     "resourceNotFound": "Problemas com o servidor. Tente novamente mais tarde.",
     "serverError": "Problemas com o servidor. Tente novamente mais tarde.",
-    "invalidCredentials": "E-mail e/ou senha incorretos. Verifique as informações e tente novamente."
+    "invalidCredentials": "E-mail e/ou senha incorretos. Verifique as informações e tente novamente.",
+    "profile": "Perfil"
 }

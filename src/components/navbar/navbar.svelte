@@ -38,18 +38,23 @@
                             </h6>
                         </li>
                     {/if}
-                    <li>
-                        <a href="/register">{$_("createUser")}</a>
-                    </li>
-                    <li>
-                        {#if $page.data.user}
+                    {#if $page.data.user}
+                        <li>
+                            <a href="/profile">{$_("profile")}</a>
+                        </li>
+                        <li>
                             <form action="/logout" method="POST" class="inline-form-action">
                                 <button type="submit">{$_("logout")}</button>
                             </form>
-                        {:else}
+                        </li>
+                    {:else}
+                        <li>
+                            <a href="/register">{$_("createUser")}</a>
+                        </li>
+                        <li>
                             <a href="/login">{$_("login")}</a>
-                        {/if}
-                    </li>
+                        </li>
+                    {/if}
                 </ul>
               </details>
         </li>
