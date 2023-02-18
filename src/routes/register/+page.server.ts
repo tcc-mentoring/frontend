@@ -31,25 +31,16 @@ export const actions: Actions = {
                     lastName})
             })
             
-            const createUserResponse = await fetchCreateUser.json();
             
-            if (fetchCreateUser.ok) {
-                cookies.set('session', createUserResponse.userAuthUUID, {
-                    path: '/',
-                    httpOnly: true,
-                    sameSite: 'strict',
-                    secure: process.env.NODE_ENV === 'production',
-                    maxAge: 60 * 60 * 24 * 7,
-                  });
-            }
-    
-            if (createUserResponse.statusCode === 400) {
+            if (!fetchCreateUser.ok) {
+                const createUserResponse = await fetchCreateUser.json();
+
                 return fail(400, {serverErrors: createUserResponse.message})
             }
         } catch (err) {
             return fail(500, {serverErrors: ["serverError"]})
         }
-
-        throw redirect(302, "/")
+        
+        throw redirect(302, "/login")
     }
 };
