@@ -16,7 +16,7 @@ export const actions: Actions = {
         }
         
         try {
-            const fetchLogin = await fetch(`${BACKEND}user/login`, {
+            const fetchLogin = await fetch(`${BACKEND}auth/login`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export const actions: Actions = {
             const loginResponse = await fetchLogin.json();
             
             if (fetchLogin.ok) {
-                cookies.set('session', loginResponse.userAuthUUID, {
+                cookies.set('session', loginResponse.access_token, {
                     path: '/',
                     httpOnly: true,
                     sameSite: 'strict',
@@ -39,8 +39,8 @@ export const actions: Actions = {
                   });
             }
     
-            if (loginResponse.statusCode === 400) {
-                return fail(400, {serverErrors: loginResponse.message})
+            if (loginResponse.statusCode === 401) {
+                return fail(401, {serverErrors: loginResponse.message})
             }
         } catch (err) {
             return fail(500, {serverErrors: ["serverError"]})
