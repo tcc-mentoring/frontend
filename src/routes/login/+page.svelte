@@ -7,7 +7,7 @@
     export let form: ActionData;
 </script>
 
-<form method="POST" action="?/login" use:enhance>
+<form method="POST" action="?/login" class="form-container" use:enhance>
 
     <FormGroup name="email" labelSlug="login.email" error={form?.errors?.email} type="email" autocomplete="email" />
 

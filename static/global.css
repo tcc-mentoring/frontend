@@ -31,3 +31,11 @@ div :global(svg) {
 body {
   height: calc(100vh - var(--nav-height))
 }
+
+.form-container {
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  padding: 15px 25px;
+  max-width: 500px;
+  margin: auto;
+}
