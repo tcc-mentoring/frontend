@@ -12,6 +12,7 @@
         width: 100vw;
         top: 0;
         left: 0;
+        z-index: 999;
     }
 
     .inline-form-action {
@@ -37,10 +38,11 @@
                                 {$page.data.user.firstName}
                             </h6>
                         </li>
-                    {/if}
-                    {#if $page.data.user}
                         <li>
                             <a href="/profile">{$_("profile")}</a>
+                        </li>
+                        <li>
+                            <a href="/calendar">{$_("calendar")}</a>
                         </li>
                         <li>
                             <form action="/logout" method="POST" class="inline-form-action">
