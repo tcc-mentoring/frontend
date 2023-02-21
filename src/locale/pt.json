@@ -60,5 +60,8 @@
     "academyEntryEndDate.invalidDate": "A data de fim deve ser válida",
     "academyEntryStillStudying": "Ainda estou cursando",
     "saveAcademyEntry": "Salvar ocupação",
-    "noAcademyEntries": "Nenhum registro acadêmico"
+    "noAcademyEntries": "Nenhum registro acadêmico",
+    "calendar": "Calendário",
+    "eventCalendar": "Sua agenda",
+    "today": "Hoje"
 }
