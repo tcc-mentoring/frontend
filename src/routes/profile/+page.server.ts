@@ -1,7 +1,7 @@
 import { invalidate } from "$app/navigation"
 import { BACKEND } from "$env/static/private"
 import { fail, redirect, type Actions } from "@sveltejs/kit"
-import { validateOcupation } from "../../validators/profileValidator"
+import { validateAcademyEntry, validateOcupation } from "../../validators/profileValidator"
 import type { PageServerLoad } from "./$types"
 
 export const load: PageServerLoad = async ({ locals, cookies, depends }) => {
@@ -60,6 +60,44 @@ export const actions: Actions = {
             })
             
             if (fetchCreateOcupation.ok) {
+                invalidate('app:profile')
+            }
+        } catch (err) {
+            console.log({ err})
+        }
+    },
+    
+    academyEntry: async ({cookies, request}) => {
+        const formData = await request.formData();
+
+        const course = formData.get('course') as string;
+        const institution = formData.get('institution') as string;
+        const startDate = formData.get('startDate') as string;
+        const endDate = formData.get('endDate') as string;
+
+        const errors = validateAcademyEntry({course, startDate, endDate, institution});
+
+        if (Object.keys(errors).length > 0) {
+            return fail(400, { errors });
+        }
+
+        try {
+
+            const fetchCreateAcademyEntry = await fetch(`${BACKEND}profile/academy-entry`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${cookies.get('session')}`
+                },
+                body: JSON.stringify({
+                    course,
+                    institution,
+                    startDate,
+                    endDate
+                })
+            })
+            
+            if (fetchCreateAcademyEntry.ok) {
                 invalidate('app:profile')
             }
         } catch (err) {
