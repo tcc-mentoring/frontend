@@ -7,6 +7,13 @@ interface OcupationForm {
     endDate?: string;
 }
 
+interface AcademyEntryForm {
+    course: string;
+    institution: string;
+    startDate: string;
+    endDate?: string;
+}
+
 export function validateOcupation(ocupationForm: OcupationForm): Record<string, string> {
     const errors: Record<string, string> = {};
 
@@ -27,6 +34,32 @@ export function validateOcupation(ocupationForm: OcupationForm): Record<string, 
     }
 
     if (!!ocupationForm.endDate && !moment(ocupationForm.endDate).isValid()) {
+        errors.endDate = "invalidDate";
+    }
+
+    return errors;
+}
+
+export function validateAcademyEntry(academyEntryForm: AcademyEntryForm): Record<string, string> {
+    const errors: Record<string, string> = {};
+
+    if (!academyEntryForm.course || typeof academyEntryForm.course !== "string") {
+        errors.course = "required";
+    }
+
+    if (!academyEntryForm.institution || typeof academyEntryForm.institution !== "string") {
+        errors.institution = "required";
+    }
+
+    if (!academyEntryForm.startDate || typeof academyEntryForm.startDate !== "string") {
+        errors.startDate = "required";
+    }
+
+    if (!moment(academyEntryForm.startDate).isValid()) {
+        errors.startDate = "invalidDate";
+    }
+
+    if (!!academyEntryForm.endDate && !moment(academyEntryForm.endDate).isValid()) {
         errors.endDate = "invalidDate";
     }
 
