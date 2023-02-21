@@ -7,7 +7,7 @@
     export let form: ActionData;
 </script>
 
-<form method="POST" action="?/register" use:enhance>
+<form method="POST" action="?/register" class="form-container" use:enhance>
 
     <FormGroup name="firstName" labelSlug="createUser.firstName" error={form?.errors?.firstName} autocomplete="given-name"/>
 

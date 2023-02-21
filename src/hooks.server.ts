@@ -8,7 +8,12 @@ export const handle: Handle = async ({ event, resolve }) => {
     return await resolve(event)
   }
 
-  const fetchAuth = await fetch(`${BACKEND}user/auth/${session}`)
+  const fetchAuth = await fetch(`${BACKEND}auth`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${session}`
+    }
+  });
 
   if (fetchAuth.ok) {
     const user = await fetchAuth.json();

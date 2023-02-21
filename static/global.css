@@ -5,8 +5,8 @@
   --primary: #5F7470 !important;
   --primary-hover: #889696 !important;
   --primary-focus: #B8BDB5 !important;
-  --primary-inverse: #E0E2DB !important;
-  --background-color: var(--primary-inverse);  
+  --primary-inverse: #f3f3ef !important;
+  --background-color: var(--primary-inverse) !important; 
   --color: #131716!important;
   --h1-color: #131716!important;
   --h2-color: #303a38 !important;
@@ -21,8 +21,21 @@
   --form-element-focus-color: var(--primary-focus);
   --switch-color: var(--primary-inverse);
   --switch-checked-background-color: var(--primary);
+  --nav-height: 100px;
 }
 
 div :global(svg) {
   font-size: 36px;
+}
+
+body {
+  height: calc(100vh - var(--nav-height))
+}
+
+.form-container {
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  padding: 15px 25px;
+  max-width: 500px;
+  margin: auto;
 }

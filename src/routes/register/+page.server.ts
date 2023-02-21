@@ -1,46 +1,30 @@
 import { BACKEND } from "$env/static/private";
 import { fail, redirect, type Actions } from "@sveltejs/kit";
+import { validateRegister } from "../../validators/registerValidator";
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async ({ locals }) => {
+  if (locals.user) {
+    throw redirect(302, '/')
+  }
+}
 
 export const actions: Actions = {
     register: async ({cookies, request}) => { 
         const formData = await request.formData();
         
-        const email = formData.get("email");
-        const password = formData.get("password");
-        const confirmPassword = formData.get("confirmPassword");
-        const firstName = formData.get("firstName");
-        const lastName = formData.get("lastName");
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+        const confirmPassword = formData.get("confirmPassword") as string;
+        const firstName = formData.get("firstName") as string;
+        const lastName = formData.get("lastName") as string;
 
-        const errors: Record<string, string> = {}
-
-        if (password !== confirmPassword) {
-            errors.password = "matchPassword";
-        }
-
-        if (!password || typeof password !== "string") {
-            errors.password = "required";
-        }
-
-        if (!confirmPassword || typeof confirmPassword !== "string") {
-            errors.confirmPassword = "required";
-        }
-
-        if (!email || typeof email !== "string") {
-            errors.email = "required";
-        }
-
-        if (!firstName || typeof firstName !== "string") {
-            errors.firstName = "required";
-        }
-
-        if (!lastName || typeof lastName !== "string") {
-            errors.lastName = "required";
-        }
+        const errors = validateRegister({email, password, confirmPassword, firstName, lastName});
 
         if (Object.keys(errors).length > 0) {
             return fail(400, { errors });
         }
-        
+
         try {
             const fetchCreateUser = await fetch(`${BACKEND}user`, {
                 method: "POST",
@@ -54,27 +38,16 @@ export const actions: Actions = {
                     lastName})
             })
             
-            const createUserResponse = await fetchCreateUser.json();
             
-            if (fetchCreateUser.status === 201 ) {
-                cookies.set('session', createUserResponse.userAuthUUID, {
-                    path: '/',
-                    httpOnly: true,
-                    sameSite: 'strict',
-                    secure: process.env.NODE_ENV === 'production',
-                    maxAge: 60 * 60 * 24 * 7,
-                  });
-            }
-    
-            if (createUserResponse.statusCode === 400) {
+            if (!fetchCreateUser.ok) {
+                const createUserResponse = await fetchCreateUser.json();
+
                 return fail(400, {serverErrors: createUserResponse.message})
-            } else if (createUserResponse.statusCode === 404) {
-                return fail(400, {serverErrors: ["resourceNotFound"]})
             }
         } catch (err) {
             return fail(500, {serverErrors: ["serverError"]})
         }
 
-        throw redirect(302, "/")
+        throw redirect(302, "/login")
     }
 };
