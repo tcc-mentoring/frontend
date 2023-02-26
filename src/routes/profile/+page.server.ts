@@ -4,16 +4,15 @@ import { fail, redirect, type Actions } from "@sveltejs/kit"
 import { validateAcademyEntry, validateOcupation } from "../../validators/profileValidator"
 import type { PageServerLoad } from "./$types"
 
-export const load: PageServerLoad = async ({ locals, cookies, depends }) => {
+export const load: PageServerLoad = async ({ locals, depends, fetch }) => {
     if (!locals.user) {
       throw redirect(302, '/login')
     }
-    const session = cookies.get('session');
+
     const fetchProfile = await fetch(`${BACKEND}profile/user`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session}`
         }
     });
 
@@ -29,7 +28,7 @@ export const load: PageServerLoad = async ({ locals, cookies, depends }) => {
 }  
 
 export const actions: Actions = {
-    ocupation: async ({cookies, request}) => {
+    ocupation: async ({request, fetch}) => {
         const formData = await request.formData();
 
         const description = formData.get('description') as string;
@@ -48,8 +47,7 @@ export const actions: Actions = {
             const fetchCreateOcupation = await fetch(`${BACKEND}profile/ocupation`, {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${cookies.get('session')}`
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     description,
@@ -67,7 +65,7 @@ export const actions: Actions = {
         }
     },
     
-    academyEntry: async ({cookies, request}) => {
+    academyEntry: async ({request, fetch}) => {
         const formData = await request.formData();
 
         const course = formData.get('course') as string;
@@ -87,7 +85,6 @@ export const actions: Actions = {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${cookies.get('session')}`
                 },
                 body: JSON.stringify({
                     course,
