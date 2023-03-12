@@ -17,16 +17,16 @@ export const load: PageServerLoad = async ({ locals, depends, fetch }) => {
 
     depends('app:mentor-profile')
 
-    if (fetchMentorProfile.ok) {
-        const mentorProfile = await fetchMentorProfile.json();
-
-        return {
-            mentorProfile
-        }
-    } else {
+    if (!fetchMentorProfile.ok) {
         return {
             mentorNotRegistered: true
         }
+    } 
+
+    const mentorProfile = await fetchMentorProfile.json();
+
+    return {
+        mentorProfile
     }
 }  
 
@@ -37,7 +37,7 @@ export const actions: Actions = {
         const selfDescription = formData.get('selfDescription');
         const knowledgeArea = formData.get('knowledgeArea');
 
-        const specialties = ['teste'];
+        const specialties = formData.get('specialties-value');
 
         const fetchCreateMentorProfile = await fetch(`${BACKEND}mentor-profile/user`, {
             method: "POST",

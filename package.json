@@ -37,6 +37,7 @@
 	"dependencies": {
 		"@picocss/pico": "^1.5.7",
 		"moment": "^2.29.4",
-		"svelte-i18n": "^3.6.0"
+		"svelte-i18n": "^3.6.0",
+		"svelte-tags-input": "^4.0.0"
 	}
 }

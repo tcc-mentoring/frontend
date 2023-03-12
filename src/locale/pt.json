@@ -64,5 +64,14 @@
     "calendar": "Calendário",
     "eventCalendar": "Sua agenda",
     "today": "Hoje",
-    "mentorProfile": "Perfil de mentor"
+    "mentorProfile": "Perfil de mentor",
+    "mentorProfileSelfDescription": "Auto-descrição",
+    "mentorProfileKnowledgeArea": "Área de conhecimento",
+    "mentorProfileSpecialties": "Especialidades",
+    "mentorProfileSpecialtiesList": "Especialidades:",
+    "scheduleSession": "Agendar sessão",
+    "close": "Fechar",
+    "send": "Enviar",
+    "scheduleSessionWith": "Agendar sessão com {firstName} {lastName}",
+    "scheduleSession.date": "Data da Sessão:"
 }
