@@ -39,6 +39,9 @@
                             </h6>
                         </li>
                         <li>
+                            <a href="/mentor-profile">{$_("mentorProfile")}</a>
+                        </li>
+                        <li>
                             <a href="/profile">{$_("profile")}</a>
                         </li>
                         <li>

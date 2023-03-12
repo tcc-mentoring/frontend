@@ -7,7 +7,7 @@ export const load: PageServerLoad = async () => {
 }
 
 export const actions: Actions = {
-  async default({ cookies, locals }) {
+  async default({ cookies, locals, fetch }) {
     const currentUUID = cookies.get('session');
 
     cookies.set('session', '', {

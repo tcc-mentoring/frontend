@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 }
 
 export const actions: Actions = {
-    register: async ({cookies, request}) => { 
+    register: async ({request, fetch}) => { 
         const formData = await request.formData();
         
         const email = formData.get("email") as string;
