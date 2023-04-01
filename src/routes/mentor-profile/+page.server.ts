@@ -1,9 +1,9 @@
-import { invalidate } from "$app/navigation";
 import { BACKEND } from "$env/static/private";
 import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types"
 
-export const load: PageServerLoad = async ({ locals, depends, fetch }) => {
+export const load: PageServerLoad = async ({ locals, fetch, depends }) => {
+
     if (!locals.user) {
       throw redirect(302, '/login')
     }
@@ -26,12 +26,13 @@ export const load: PageServerLoad = async ({ locals, depends, fetch }) => {
     const mentorProfile = await fetchMentorProfile.json();
 
     return {
-        mentorProfile
+        mentorProfile,
+        mentorNotRegistered: false
     }
 }  
 
 export const actions: Actions = {
-    mentorRegister: async ({request, fetch}) => {
+    mentorRegister: async ({request, fetch, }) => {
         const formData = await request.formData();
 
         const selfDescription = formData.get('selfDescription');
@@ -39,7 +40,7 @@ export const actions: Actions = {
 
         const specialties = formData.get('specialties-value');
 
-        const fetchCreateMentorProfile = await fetch(`${BACKEND}mentor-profile/user`, {
+        await fetch(`${BACKEND}mentor-profile/user`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -49,10 +50,10 @@ export const actions: Actions = {
                 knowledgeArea,
                 specialties
             })
-        })
-                 
-        if (fetchCreateMentorProfile.ok) {
-            invalidate('app:mentor-profile')
+        }) 
+
+        return {
+            success: true
         }
     }
 };
