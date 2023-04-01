@@ -2,14 +2,12 @@
     import Tags from "svelte-tags-input";
 	import { enhance } from '$app/forms';
     import { _ } from 'svelte-i18n'
-    import type { PageData } from './$types';
+    import type { ActionData, PageData } from './$types';
 	import TextArea from '../../components/form/textArea.svelte';
+	import { invalidate, invalidateAll } from "$app/navigation";
 
     export let data: PageData;
-
-    export let {mentorNotRegistered, mentorProfile} = data;
     export let specialties: string[] = [];
-
 </script>
 
 <style>
@@ -23,8 +21,19 @@
         {$_("mentorProfile")}
     </h2>
 
-    {#if mentorNotRegistered}
-        <form action="?/mentorRegister" method="POST" use:enhance>
+    {#if data.mentorNotRegistered}
+        <form 
+            action="?/mentorRegister" 
+            method="POST" 
+            use:enhance={() => {
+                return  ({ result, update }) => {
+                    if(result.type === "success") {
+                        invalidate('app:mentor-profile');
+                    } else {
+                        update()
+                    }
+                }
+          }}>
             <TextArea name="selfDescription" labelSlug="mentorProfileSelfDescription"  error={undefined}/>
 
             <div class="form-group">
@@ -59,10 +68,10 @@
         </form>
     {:else}
         <article>
-            <div>{mentorProfile.selfDescription}</div>
-            <div>{mentorProfile.knowledgeArea}</div>
+            <div>{data.mentorProfile.selfDescription}</div>
+            <div>{data.mentorProfile.knowledgeArea}</div>
             <ul>
-                {#each mentorProfile.specialties as specialty}
+                {#each data.mentorProfile.specialties as specialty}
                     <li>{specialty}</li>
                 {/each}
             </ul>

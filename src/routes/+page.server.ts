@@ -1,7 +1,8 @@
 import { BACKEND } from "$env/static/private";
+import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types"
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({fetch}) => {
     let mentorProfiles = [];
 
     const fetchMentorProfiles = await fetch(`${BACKEND}mentor-profile`, {
@@ -17,4 +18,27 @@ export const load: PageServerLoad = async () => {
     }
 
     return {mentorProfiles};
+};
+
+export const actions: Actions = {
+    scheduleSession: async({request, fetch, }) => {
+        const formData = await request.formData();
+
+        const startDateTime = formData.get("startDatetime") as string;
+        const menthorEmail = formData.get("menthorEmail") as string;
+
+        await fetch(`${BACKEND}schedule`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                startDateTime,
+                menthorEmail
+            })
+        }) 
+
+        throw redirect(302, "/calendar")
+
+    }
 };

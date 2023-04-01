@@ -23,7 +23,9 @@
 <nav>
     <ul>
         <li>
-            <strong>{$_("siteTitle")}</strong>
+            <a href="/">
+                <strong>{$_("siteTitle")}</strong>
+            </a>
         </li>
     </ul>
     
