@@ -2,7 +2,7 @@
 	import { enhance } from "$app/forms";
 	import { _ } from "svelte-i18n";
 	import FormGroup from "../components/form/formGroup.svelte";
-    import MentorCard from "../components/mentor/MentorCard.svelte";
+    import MentorCard from "../components/mentor/mentorCard.svelte";
 	import type { MentorProfile } from "../validators/mentorProfileValidator";
 	import type { PageData } from "./$types";
 
