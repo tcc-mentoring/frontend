@@ -32,7 +32,7 @@ export const load: PageServerLoad = async ({ locals, fetch, depends }) => {
 }  
 
 export const actions: Actions = {
-    mentorRegister: async ({request, fetch, }) => {
+    mentorRegister: async ({request, fetch }) => {
         const formData = await request.formData();
 
         const selfDescription = formData.get('selfDescription');
