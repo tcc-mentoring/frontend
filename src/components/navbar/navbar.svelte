@@ -50,6 +50,9 @@
                             <a href="/calendar">{$_("calendar")}</a>
                         </li>
                         <li>
+                            <a href="/sessions">{$_("sessions")}</a>
+                        </li>
+                        <li>
                             <form action="/logout" method="POST" class="inline-form-action">
                                 <button type="submit">{$_("logout")}</button>
                             </form>
