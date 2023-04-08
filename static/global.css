@@ -5,6 +5,7 @@
   --primary: #5F7470 !important;
   --primary-hover: #889696 !important;
   --primary-focus: #B8BDB5 !important;
+  --primary-focus-mild: #B8BDB533;
   --primary-inverse: #f3f3ef !important;
   --background-color: var(--primary-inverse) !important; 
   --color: #131716!important;
