@@ -73,5 +73,13 @@
     "close": "Fechar",
     "send": "Enviar",
     "scheduleSessionWith": "Agendar sessão com {firstName} {lastName}",
-    "scheduleSession.date": "Data da Sessão:"
+    "scheduleSession.date": "Data da Sessão:",
+    "sessionsToReview": "Sessões para avaliar ({length})",
+    "finishedSessions": "Sessões finalizadas ({length})",
+    "sessionDate": "Data da Sessão:",
+    "sessionsMentor": "Pessoa mentora:",
+    "sessionReviewScore": "Avaliação da sessão:",
+    "sessionReviewDetails": "Detalhes da avaliação:",
+    "submitReview": "Enviar avaliação",
+    "sessions": "Sessões"
 }
