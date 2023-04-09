@@ -25,6 +25,7 @@ export const actions: Actions = {
         const formData = await request.formData();
 
         const startDateTime = formData.get("startDatetime") as string;
+        const startDateTimeWithTimezone = `${startDateTime}+0000`;
         const menthorEmail = formData.get("menthorEmail") as string;
 
         await fetch(`${BACKEND}schedule`, {
@@ -33,7 +34,7 @@ export const actions: Actions = {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                startDateTime,
+                startDateTime: startDateTimeWithTimezone,
                 menthorEmail
             })
         }) 
