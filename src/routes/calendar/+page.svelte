@@ -5,13 +5,20 @@
     import type { PageData } from './$types';
 
     import '@event-calendar/core/index.css';
-	import { sessionMapToCalendar, type SessionDTO } from '../../utils/session';
+	import { sessionMapToCalendar } from '../../utils/session';
+	import { closeDialog, openDialog } from '../../utils/dialog';
+	import SessionInformationDetail from '../../components/sessions/sessionInformationDetail.svelte';
+	import type { SessionDTO } from '../../validators/sessionValidator';
     
+    const SESSION_DETAIL_DIALOG_ID = "sessionDetailView";
+
     let plugins = [TimeGrid];
     export let data: PageData;
 
     let menteeSessions = data.userSessions.asMentee.map((session: SessionDTO) => sessionMapToCalendar(session, "mentee", $_("menteeTitle")));
     let mentorSessions = data.userSessions.asMentor.map((session: SessionDTO) => sessionMapToCalendar(session, "mentor", $_("mentorTitle")));
+
+    let selectedSession: SessionDTO = {} as SessionDTO;
 
     let options = {
         view: 'timeGridWeek',
@@ -21,12 +28,32 @@
         },
         headerToolbar: {start: 'title today', center: '', end: 'prev,next'},
         locale: "pt-BR",
-        events: [...menteeSessions, ...mentorSessions]
+        events: [...menteeSessions, ...mentorSessions],
+        eventClick: (event: any) => {
+            selectedSession = event.event.extendedProps;
+            console.log({selectedSession})
+            openDialog(SESSION_DETAIL_DIALOG_ID);
+        }
     };
 </script>
 
 
 <section>
     <h2>{$_("eventCalendar")}</h2>
+    <dialog id={SESSION_DETAIL_DIALOG_ID}>
+        
+        {#if Object.keys(selectedSession).length > 0}
+            <article>
+                <header>
+                    {$_("sessionDetails")}
+                </header>
+
+                <SessionInformationDetail sessionDetails={{date: selectedSession.startDateTime, mentorName: selectedSession.with.firstName}}/>
+                <footer>
+                    <button class="outline" type="button" on:click={() => {closeDialog(SESSION_DETAIL_DIALOG_ID)}}>{$_("close")}</button>
+                </footer>
+            </article>
+        {/if}
+    </dialog>
     <Calendar {plugins} {options} />
 </section>
