@@ -2,9 +2,9 @@
 	import { enhance } from '$app/forms';
 	import { invalidate, invalidateAll } from '$app/navigation';
 	import { _ } from 'svelte-i18n';
-	import TextGroup from '../commons/textGroup.svelte';
 	import FormGroup from '../form/formGroup.svelte';
 	import TextArea from '../form/textArea.svelte';
+	import SessionInformationDetail from './sessionInformationDetail.svelte';
 
 	export let sessionDetails: {
 		date: string;
@@ -14,14 +14,7 @@
 </script>
 
 <div class="sessionToReviewDetail">
-	<div class="grid">
-		<TextGroup identifier="session-date" labelSlug="sessionDate" text={sessionDetails.date} />
-		<TextGroup
-			identifier="session-mentor"
-			labelSlug="sessionsMentor"
-			text={sessionDetails.mentorName}
-		/>
-	</div>
+	<SessionInformationDetail {sessionDetails}/>
 
 	<form
 		action="?/reviewSession"
