@@ -81,5 +81,7 @@
     "sessionReviewScore": "Avaliação da sessão:",
     "sessionReviewDetails": "Detalhes da avaliação:",
     "submitReview": "Enviar avaliação",
-    "sessions": "Sessões"
+    "sessions": "Sessões",
+    "menteeTitle": "Pessoa mentora:",
+    "mentorTitle": "Pessoa mentorada:"
 }
