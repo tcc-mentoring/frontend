@@ -9,6 +9,7 @@
 	import { closeDialog, openDialog } from '../../utils/dialog';
 	import SessionInformationDetail from '../../components/sessions/sessionInformationDetail.svelte';
 	import type { SessionDTO } from '../../validators/sessionValidator';
+	import moment from 'moment';
     
     const SESSION_DETAIL_DIALOG_ID = "sessionDetailView";
 
@@ -37,19 +38,26 @@
     };
 </script>
 
+<style>
+    #sessionDetailsContainer {
+        min-width: 400px;
+    }
+</style>
 
 <section>
     <h2>{$_("eventCalendar")}</h2>
     <dialog id={SESSION_DETAIL_DIALOG_ID}>
         
         {#if Object.keys(selectedSession).length > 0}
-            <article>
+            <article id="sessionDetailsContainer">
                 <header>
                     {$_("sessionDetails")}
                 </header>
 
-                <SessionInformationDetail sessionDetails={{date: selectedSession.startDateTime, mentorName: selectedSession.with.firstName}}/>
+                <SessionInformationDetail sessionDetails={{date: moment(selectedSession.startDateTime).format("DD/MM/YYYY HH:mm"), mentorName: selectedSession.with.firstName}}/>
                 <footer>
+                    <button type="submit">{$_("manageSession")}</button>
+
                     <button class="outline" type="button" on:click={() => {closeDialog(SESSION_DETAIL_DIALOG_ID)}}>{$_("close")}</button>
                 </footer>
             </article>

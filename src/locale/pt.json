@@ -84,5 +84,6 @@
     "sessions": "Sessões",
     "menteeTitle": "Pessoa mentora:",
     "mentorTitle": "Pessoa mentorada:",
-    "sessionDetails": "Detalhes da sessão"
+    "sessionDetails": "Detalhes da sessão",
+    "manageSession": "Gerenciar Sessão"
 }
