@@ -29,11 +29,11 @@ export function validateOcupation(ocupationForm: OcupationForm): Record<string, 
         errors.startDate = "required";
     }
 
-    if (!moment(ocupationForm.startDate).isValid()) {
+    if (!moment.utc(ocupationForm.startDate).isValid()) {
         errors.startDate = "invalidDate";
     }
 
-    if (!!ocupationForm.endDate && !moment(ocupationForm.endDate).isValid()) {
+    if (!!ocupationForm.endDate && !moment.utc(ocupationForm.endDate).isValid()) {
         errors.endDate = "invalidDate";
     }
 
@@ -55,11 +55,11 @@ export function validateAcademyEntry(academyEntryForm: AcademyEntryForm): Record
         errors.startDate = "required";
     }
 
-    if (!moment(academyEntryForm.startDate).isValid()) {
+    if (!moment.utc(academyEntryForm.startDate).isValid()) {
         errors.startDate = "invalidDate";
     }
 
-    if (!!academyEntryForm.endDate && !moment(academyEntryForm.endDate).isValid()) {
+    if (!!academyEntryForm.endDate && !moment.utc(academyEntryForm.endDate).isValid()) {
         errors.endDate = "invalidDate";
     }
 

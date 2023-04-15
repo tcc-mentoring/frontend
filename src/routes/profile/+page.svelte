@@ -44,8 +44,8 @@
                             "fromToDateDisplay" : 
                             "sinceDisplay", 
                             {values: {
-                                startDate: moment(ocupation.startDate).format("DD/MM/YYYY"),
-                                endDate: moment(ocupation.endDate).format("DD/MM/YYYY")
+                                startDate: moment.utc(ocupation.startDate).format("DD/MM/YYYY"),
+                                endDate: moment.utc(ocupation.endDate).format("DD/MM/YYYY")
                             }})} 
                     </li>
                 {/each}
@@ -83,8 +83,8 @@
                         "fromToDateDisplay" : 
                         "sinceDisplay", 
                         {values: {
-                            startDate: moment(academyEntry.startDate).format("DD/MM/YYYY"),
-                            endDate: moment(academyEntry.endDate).format("DD/MM/YYYY")
+                            startDate: moment.utc(academyEntry.startDate).format("DD/MM/YYYY"),
+                            endDate: moment.utc(academyEntry.endDate).format("DD/MM/YYYY")
                         }})} 
                 </li>
                 {/each}
