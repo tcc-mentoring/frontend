@@ -54,9 +54,11 @@
                     {$_("sessionDetails")}
                 </header>
 
-                <SessionInformationDetail sessionDetails={{date: moment(selectedSession.startDateTime).format("DD/MM/YYYY HH:mm"), mentorName: selectedSession.with.firstName}}/>
+                <SessionInformationDetail sessionDetails={{date: moment.utc(selectedSession.startDateTime).format("DD/MM/YYYY HH:mm"), mentorName: selectedSession.with.firstName}}/>
                 <footer>
-                    <button type="submit">{$_("manageSession")}</button>
+                    <button type="button" on:click={() => {
+                        window.location.href = `/sessions/${selectedSession.id}`
+                        } }>{$_("manageSession")}</button>
 
                     <button class="outline" type="button" on:click={() => {closeDialog(SESSION_DETAIL_DIALOG_ID)}}>{$_("close")}</button>
                 </footer>
