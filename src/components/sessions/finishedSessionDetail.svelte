@@ -6,7 +6,8 @@
         date: string,
         mentorName: string,
         score: number,
-        details: string
+        details: string,
+        id: number
     };
 </script>
 
@@ -22,7 +23,11 @@
         <TextGroup identifier="session-mentor" labelSlug="sessionsMentor" text={sessionDetails.mentorName} />
     </div>
     <div class="grid">
-        <TextGroup identifier="session-review-score" labelSlug="sessionReviewScore" text={sessionDetails.score} />
+        <TextGroup identifier="session-review-score" labelSlug="sessionReviewScore" text={sessionDetails.score.toString()} />
         <TextGroup identifier="session-review-details" labelSlug="sessionReviewDetails" text={sessionDetails.details} />
     </div>
+
+    <button type="button" class="outline" on:click={() => {
+        window.location.href =  `/sessions/${sessionDetails.id}`;
+    }}>{$_("openSessionDetails")}</button>
 </div>

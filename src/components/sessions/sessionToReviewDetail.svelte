@@ -47,12 +47,11 @@
 		</div>
 
 		<input type="hidden" name="scheduleId" value={sessionDetails.id} />
-		<button type="submit">{$_('submitReview')}</button>
+		<div class="grid">
+			<button type="submit">{$_('submitReview')}</button>
+			<button type="button" class="outline" on:click={() => {
+				window.location.href =  `/sessions/${sessionDetails.id}`;
+			}}>{$_("openSessionDetails")}</button>
+		</div>
 	</form>
 </div>
-
-<style>
-	.sessionToReviewDetail > .grid:first-child {
-		margin-bottom: 20px;
-	}
-</style>
