@@ -5,25 +5,18 @@
     import MentorCard from "../components/mentor/mentorCard.svelte";
 	import type { MentorProfile } from "../validators/mentorProfileValidator";
 	import type { PageData } from "./$types";
+	import { closeDialog, openDialog } from "../utils/dialog";
 
     export let data: PageData;
+
+    const SCHEDULE_SESSION_DIALOG_ID = "scheduleSessionDialog";
 
     let {mentorProfiles} = data;
     let mentorProfileToSchedule: MentorProfile = {} as MentorProfile;
 
     let openScheduleSessionDialog = (mentorProfile: MentorProfile) => {
         mentorProfileToSchedule = mentorProfile;
-        const scheduleSessionDialog = document.getElementById("scheduleSessionDialog");
-        if (scheduleSessionDialog) {
-            scheduleSessionDialog.setAttribute("open", "true");
-        }
-    }
-
-    let closeScheduleSessionDialog = () => {
-        const scheduleSessionDialog = document.getElementById("scheduleSessionDialog");
-        if (scheduleSessionDialog) {
-            scheduleSessionDialog.setAttribute("open", "false");
-        }   
+        openDialog(SCHEDULE_SESSION_DIALOG_ID);
     }
 </script>
 
@@ -40,7 +33,7 @@
         <MentorCard {mentorProfile} onScheduleClick={openScheduleSessionDialog}/>
     {/each}
 
-    <dialog id="scheduleSessionDialog">
+    <dialog id={SCHEDULE_SESSION_DIALOG_ID}>
         {#if !!mentorProfileToSchedule && !!mentorProfileToSchedule.user}
             <form action="?/scheduleSession" method="POST" use:enhance>
                 <article>
@@ -56,7 +49,7 @@
                     <footer>
                         <button type="submit">{$_("send")}</button>
 
-                        <button class="outline" type="button" on:click={() => {closeScheduleSessionDialog()}}>{$_("close")}</button>
+                        <button class="outline" type="button" on:click={() => {closeDialog(SCHEDULE_SESSION_DIALOG_ID)}}>{$_("close")}</button>
                     </footer>
                 </article>
             </form>

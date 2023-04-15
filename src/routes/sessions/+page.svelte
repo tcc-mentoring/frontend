@@ -30,7 +30,7 @@
             {#each data.pastSessions.sessionsToReview as sessionToReview }
                 <li class="sessionDetails">
                     <SessionToReviewDetail sessionDetails={{
-                            date: moment(sessionToReview.startDateTime).format("DD/MM/YYYY HH:mm"),
+                            date: moment.utc(sessionToReview.startDateTime).format("DD/MM/YYYY HH:mm"),
                             mentorName: `${sessionToReview.with.firstName} ${sessionToReview.with.lastName}`,
                             id: sessionToReview.id
                         }}/>
@@ -50,10 +50,11 @@
             {#each data.pastSessions.finishedSessions as finishedSession }
                 <li class="sessionDetails">
                     <FinishedSessionDetail sessionDetails={{
-                        date: moment(finishedSession.startDateTime).format("DD/MM/YYYY HH:mm"),
+                        date: moment.utc(finishedSession.startDateTime).format("DD/MM/YYYY HH:mm"),
                         mentorName: `${finishedSession.with.firstName} ${finishedSession.with.lastName}`,
                         score: finishedSession.score,
-                        details: finishedSession.details
+                        details: finishedSession.details,
+                        id: finishedSession.id
                     }} />
                 </li>
             {/each}

@@ -83,5 +83,13 @@
     "submitReview": "Enviar avaliação",
     "sessions": "Sessões",
     "menteeTitle": "Pessoa mentora:",
-    "mentorTitle": "Pessoa mentorada:"
+    "mentorTitle": "Pessoa mentorada:",
+    "sessionDetails": "Detalhes da sessão",
+    "manageSession": "Gerenciar Sessão",
+    "isMentoring": "{mentor} está mentorando {mentee}",
+    "insertMentorNotes": "Insira suas notas sobre a mentoria...",
+    "mentorNotes": "Notas da pessoa mentora:",
+    "updateMentorNotes": "Atualizar notas da mentoria",
+    "cancel": "Cancelar",
+    "openSessionDetails": "Abrir detalhes da sessão"
 }

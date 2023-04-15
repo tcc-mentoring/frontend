@@ -2,9 +2,9 @@
 	import { enhance } from '$app/forms';
 	import { invalidate, invalidateAll } from '$app/navigation';
 	import { _ } from 'svelte-i18n';
-	import TextGroup from '../commons/textGroup.svelte';
 	import FormGroup from '../form/formGroup.svelte';
 	import TextArea from '../form/textArea.svelte';
+	import SessionInformationDetail from './sessionInformationDetail.svelte';
 
 	export let sessionDetails: {
 		date: string;
@@ -14,14 +14,7 @@
 </script>
 
 <div class="sessionToReviewDetail">
-	<div class="grid">
-		<TextGroup identifier="session-date" labelSlug="sessionDate" text={sessionDetails.date} />
-		<TextGroup
-			identifier="session-mentor"
-			labelSlug="sessionsMentor"
-			text={sessionDetails.mentorName}
-		/>
-	</div>
+	<SessionInformationDetail {sessionDetails}/>
 
 	<form
 		action="?/reviewSession"
@@ -54,12 +47,11 @@
 		</div>
 
 		<input type="hidden" name="scheduleId" value={sessionDetails.id} />
-		<button type="submit">{$_('submitReview')}</button>
+		<div class="grid">
+			<button type="submit">{$_('submitReview')}</button>
+			<button type="button" class="outline" on:click={() => {
+				window.location.href =  `/sessions/${sessionDetails.id}`;
+			}}>{$_("openSessionDetails")}</button>
+		</div>
 	</form>
 </div>
-
-<style>
-	.sessionToReviewDetail > .grid:first-child {
-		margin-bottom: 20px;
-	}
-</style>
