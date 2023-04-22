@@ -40,14 +40,14 @@
                 <div class="form-group">
                     <label for="knowledgeArea">{$_('mentorProfileKnowledgeArea')}</label>
                     <select name="knowledgeArea" required>
-                        <option value="BIO">BIO</option>
-                        <option value="ENG">ENG</option>
-                        <option value="SAU">SAU</option>
-                        <option value="AGR">AGR</option>
-                        <option value="LIT">LIT</option>
-                        <option value="SOC">SOC</option>
-                        <option value="HUM">HUM</option>
-                        <option value="EXA">EXA</option>
+                        <option value="BIO">{$_("knowledgeAreas.BIO")}</option>
+                        <option value="ENG">{$_("knowledgeAreas.ENG")}</option>
+                        <option value="SAU">{$_("knowledgeAreas.SAU")}</option>
+                        <option value="AGR">{$_("knowledgeAreas.AGR")}</option>
+                        <option value="LIT">{$_("knowledgeAreas.LIT")}</option>
+                        <option value="SOC">{$_("knowledgeAreas.SOC")}</option>
+                        <option value="HUM">{$_("knowledgeAreas.HUM")}</option>
+                        <option value="EXA">{$_("knowledgeAreas.EXA")}</option>
                     </select>
                 </div>
 
@@ -69,7 +69,7 @@
             </form>
         {:else}
                 <div>{data.mentorProfile.selfDescription}</div>
-                <div>{data.mentorProfile.knowledgeArea}</div>
+                <div>{$_(`knowledgeAreas.${data.mentorProfile.knowledgeArea}`)}</div>
                 <ul>
                     {#each data.mentorProfile.specialties as specialty}
                         <li>{specialty}</li>

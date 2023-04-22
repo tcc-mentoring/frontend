@@ -91,5 +91,13 @@
     "mentorNotes": "Notas da pessoa mentora:",
     "updateMentorNotes": "Atualizar notas da mentoria",
     "cancel": "Cancelar",
-    "openSessionDetails": "Abrir detalhes da sessão"
+    "openSessionDetails": "Abrir detalhes da sessão",
+    "knowledgeAreas.BIO": "Ciências Biológicas",
+    "knowledgeAreas.ENG": "Engenharias",
+    "knowledgeAreas.SAU": "Ciências da Saúde",
+    "knowledgeAreas.AGR": "Ciências Agrárias",
+    "knowledgeAreas.LIT": "Linguísticas, Letras e Artes",
+    "knowledgeAreas.SOC": "Ciências Sociais Aplicadas",
+    "knowledgeAreas.HUM": "Ciências Humanas",
+    "knowledgeAreas.EXA": "Ciências Exatas e da Terra"
 }
