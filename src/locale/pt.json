@@ -106,5 +106,9 @@
     "menteesAchievements": "Conquistas de pessoas mentoradas",
     "achievementDescription": "Descrição de conquista:",
     "mentorParticipatedOnAchievement": "Pessoa mentora que participou da conquista:",
-    "dateAchieved": "Data da conquista:"
+    "dateAchieved": "Data da conquista:",
+    "doesNotHaveAccount": "Não possui uma conta?",
+    "createYourAccount": "Crie seu usuário.",
+    "haveAnAccount": "Já possui uma conta? ",
+    "doLogin": "Faça seu login."
 }
