@@ -99,5 +99,12 @@
     "knowledgeAreas.LIT": "Linguísticas, Letras e Artes",
     "knowledgeAreas.SOC": "Ciências Sociais Aplicadas",
     "knowledgeAreas.HUM": "Ciências Humanas",
-    "knowledgeAreas.EXA": "Ciências Exatas e da Terra"
+    "knowledgeAreas.EXA": "Ciências Exatas e da Terra",
+    "achievements": "Conquistas",
+    "createAchievement": "Registrar conquista",
+    "myAchievements": "Minhas conquistas",
+    "menteesAchievements": "Conquistas de pessoas mentoradas",
+    "achievementDescription": "Descrição de conquista:",
+    "mentorParticipatedOnAchievement": "Pessoa mentora que participou da conquista:",
+    "dateAchieved": "Data da conquista:"
 }
