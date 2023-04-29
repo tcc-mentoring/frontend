@@ -110,5 +110,8 @@
     "doesNotHaveAccount": "Não possui uma conta?",
     "createYourAccount": "Crie seu usuário.",
     "haveAnAccount": "Já possui uma conta? ",
-    "doLogin": "Faça seu login."
+    "doLogin": "Faça seu login.",
+    "achievedWhen": "Conquistado em: {date}",
+    "helped": "Ajudou: {mentee}",
+    "mentorsHelped": "Pessoas mentoras que participaram:"
 }

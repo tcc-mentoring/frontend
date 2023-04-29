@@ -7,6 +7,7 @@
 	import FormGroup from "../../components/form/formGroup.svelte";
 	import { invalidate } from "$app/navigation";
 	import type { PageData } from "./$types";
+	import moment from "moment";
 
     export let resetForm = () => {
         const form = document.getElementById("createAchievementForm") as HTMLFormElement;
@@ -28,6 +29,22 @@
 
     .form-group {
         margin-bottom: var(--spacing)
+    }
+    .achievement-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 350px);
+        column-gap: 20px;
+        row-gap: 40px;
+    }
+    .achievement-list > li {
+        list-style-type: none;
+        padding: 25px 40px;
+        border: 1px solid var(--secondary);
+        border-radius: 10px;
+    }
+    .achievement-title {
+        font-weight: bold;
+        margin-bottom: 10px;   
     }
 </style>
 
@@ -80,9 +97,24 @@
             <summary>
                 {$_("myAchievements")}
             </summary>
-            <ul>
+            <ul class="achievement-list">
                 {#each data.achieved as achieved}
-                    <li>{achieved.description}</li>
+                    <li>
+                        <div class="achievement-title">
+                            {achieved.description}
+                        </div>
+                        <div>
+                            {$_("mentorsHelped")}
+                        </div>
+                        <ul class="achievement-participants">
+                            {#each achieved.mentorsParticipated as mentor}
+                                <li>{mentor}</li>
+                            {/each}
+                        </ul>
+                        <div>
+                            {$_("achievedWhen", {values: {date: moment.utc(achieved.achievedDate).format("DD/MM/YYYY")}})}
+                        </div>
+                    </li>
                 {/each}
             </ul>
         </details>
@@ -94,9 +126,19 @@
                 {$_("menteesAchievements")}
             </summary>
             
-            <ul>
+            <ul class="achievement-list">
                 {#each data.participated as participated}
-                    <li>{participated.description}</li>
+                    <li>
+                        <div class="achievement-title">
+                            {participated.description}
+                        </div>
+                        <div>
+                            {$_("helped", { values: { mentee: participated.mentee }})}
+                        </div>
+                        <div>
+                            {$_("achievedWhen", {values: {date: moment.utc(participated.achievedDate).format("DD/MM/YYYY")}})}
+                        </div>
+                    </li>
                 {/each}
             </ul>
         </details>
