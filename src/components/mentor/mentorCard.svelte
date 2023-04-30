@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from "svelte-i18n";
 
-    export let mentorProfile: {user: {email: string}, specialties: string[]};
+    export let mentorProfile: {user: {email: string, firstName: string, lastName: string}, specialties: string[], knowledgeArea: string};
     export let onScheduleClick: (mentorProfile: any) => void;
 </script>
 
@@ -21,20 +21,29 @@
         padding: 5px 10px;
         border-radius: 3px
     }
+    #knowledgeArea {
+        margin-bottom: 20px;
+    }
 </style>
 
 <article>
     <header>
-        {mentorProfile.user.email}
+        {mentorProfile.user.firstName} {mentorProfile.user.lastName} <br/>
+        ({mentorProfile.user.email})
     </header>
-    
-    {$_("mentorProfileSpecialtiesList")}
 
-    <ul class="specialties">
-        {#each mentorProfile.specialties as specialty}
-            <li>{specialty}</li>
-        {/each}
-    </ul>
+    <div id="knowledgeArea">
+        {$_("mentorProfileKnowledgeArea")}: <div>{$_(`knowledgeAreas.${mentorProfile.knowledgeArea}`)}</div>
+    </div>
+    
+    <div id="specialtiesList">
+        {$_("mentorProfileSpecialtiesList")}
+        <ul class="specialties">
+            {#each mentorProfile.specialties as specialty}
+                <li>{specialty}</li>
+            {/each}
+        </ul>
+    </div>
 
     <footer>
         <button class="outline" on:click={() => {onScheduleClick(mentorProfile)}}>{$_("scheduleSession")}</button>

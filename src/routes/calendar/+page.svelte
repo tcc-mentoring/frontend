@@ -32,7 +32,6 @@
         events: [...menteeSessions, ...mentorSessions],
         eventClick: (event: any) => {
             selectedSession = event.event.extendedProps;
-            console.log({selectedSession})
             openDialog(SESSION_DETAIL_DIALOG_ID);
         }
     };
