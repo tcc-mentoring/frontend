@@ -14,6 +14,9 @@
     .submit-profile-information {
         margin-top: 20px;
     }
+    .mentor-profile-container > div {
+        margin-top: 20px;
+    }
 </style>
 
 <section>
@@ -68,13 +71,18 @@
 
             </form>
         {:else}
-                <div>{data.mentorProfile.selfDescription}</div>
-                <div>{$_(`knowledgeAreas.${data.mentorProfile.knowledgeArea}`)}</div>
-                <ul>
-                    {#each data.mentorProfile.specialties as specialty}
-                        <li>{specialty}</li>
-                    {/each}
-                </ul>
+            <div class="mentor-profile-container">
+                <div>{$_("description")} {data.mentorProfile.selfDescription}</div>
+                <div>{$_("knowledgeArea")} {$_(`knowledgeAreas.${data.mentorProfile.knowledgeArea}`)}</div>
+                <div class="ocupations">
+                    {$_("ocupations")}
+                    <ul>
+                        {#each data.mentorProfile.specialties as specialty}
+                            <li>{specialty}</li>
+                        {/each}
+                    </ul>
+                </div>
+            </div>
         {/if}
     </article>
 </section>
