@@ -15,6 +15,7 @@
 
     <button type="submit">{$_("login.submit")}</button>
 
+    <span>{$_("doesNotHaveAccount")} <a href="/register">{$_("createYourAccount")}</a></span>
     {#if form?.serverErrors}
         {#each form?.serverErrors as serverError}
             <p>

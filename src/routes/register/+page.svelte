@@ -21,6 +21,8 @@
 
     <button type="submit">{$_("createUser.submit")}</button>
 
+    <span>{$_("haveAnAccount")}<a href="/login">{$_("doLogin")}</a></span>
+
     {#if form?.serverErrors}
         {#each form?.serverErrors as serverError}
             <p>

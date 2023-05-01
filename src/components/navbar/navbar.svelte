@@ -53,6 +53,9 @@
                             <a href="/sessions">{$_("sessions")}</a>
                         </li>
                         <li>
+                            <a href="/achievements">{$_("achievements")}</a>
+                        </li>
+                        <li>
                             <form action="/logout" method="POST" class="inline-form-action">
                                 <button type="submit">{$_("logout")}</button>
                             </form>
