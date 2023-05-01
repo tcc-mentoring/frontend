@@ -95,7 +95,7 @@
     <article>
         <details>
             <summary>
-                {$_("myAchievements")}
+                {$_("myAchievements", { values : { length: data.achieved?.length }})}
             </summary>
             <ul class="achievement-list">
                 {#each data.achieved as achieved}
@@ -123,7 +123,7 @@
     <article>
         <details>
             <summary>
-                {$_("menteesAchievements")}
+                {$_("menteesAchievements", { values : { length: data.participated?.length }})}
             </summary>
             
             <ul class="achievement-list">
