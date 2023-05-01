@@ -74,8 +74,8 @@
             <div class="mentor-profile-container">
                 <div>{$_("description")} {data.mentorProfile.selfDescription}</div>
                 <div>{$_("knowledgeArea")} {$_(`knowledgeAreas.${data.mentorProfile.knowledgeArea}`)}</div>
-                <div class="ocupations">
-                    {$_("ocupations")}
+                <div class="mentorProfileSpecialtiesList">
+                    {$_("mentorProfileSpecialtiesList")}
                     <ul>
                         {#each data.mentorProfile.specialties as specialty}
                             <li>{specialty}</li>
