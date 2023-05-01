@@ -104,7 +104,7 @@
                     
                     <InputCheckbox name="stillStudying" labelSlug="academyEntryStillStudying" bind:checked={stillStudying}/>
     
-                    <button class="submit-profile-information" type="submit">{$_("saveAcademyEnty")}</button>
+                    <button class="submit-profile-information" type="submit">{$_("saveAcademyEntry")}</button>
                 </form>
             </details>
         </article>
