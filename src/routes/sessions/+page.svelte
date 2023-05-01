@@ -25,6 +25,28 @@
 <article class="sessionsContainer">
     <details>
         <summary>
+            {$_("upcomingSessions", {values: {length: data.sessions.upcomingSessions?.length}})}
+        </summary>
+
+        <ul id="upcomingSessionsContainer">
+            {#each data.sessions.upcomingSessions as upcomingSession }
+                <li class="sessionDetails">
+                    <UpcomingSessionDetail sessionDetails={{
+                        date: moment.utc(upcomingSession.startDateTime).format("DD/MM/YYYY HH:mm"),
+                        withName: `${upcomingSession.with.firstName} ${upcomingSession.with.lastName}`,
+                        as: upcomingSession.as,
+                        id: upcomingSession.id
+                    }} />
+                </li>
+            {/each}
+        </ul>
+
+    </details>
+</article>
+
+<article class="sessionsContainer">
+    <details>
+        <summary>
             {$_("sessionsToReview", {values: {length: data.sessions.sessionsToReview?.length}})}
         </summary>
         <ul id="sessionsToReviewContainer">
@@ -57,28 +79,6 @@
                         details: finishedSession.details,
                         id: finishedSession.id,
                         as: finishedSession.as
-                    }} />
-                </li>
-            {/each}
-        </ul>
-
-    </details>
-</article>
-
-<article class="sessionsContainer">
-    <details>
-        <summary>
-            {$_("upcomingSessions", {values: {length: data.sessions.upcomingSessions?.length}})}
-        </summary>
-
-        <ul id="upcomingSessionsContainer">
-            {#each data.sessions.upcomingSessions as upcomingSession }
-                <li class="sessionDetails">
-                    <UpcomingSessionDetail sessionDetails={{
-                        date: moment.utc(upcomingSession.startDateTime).format("DD/MM/YYYY HH:mm"),
-                        withName: `${upcomingSession.with.firstName} ${upcomingSession.with.lastName}`,
-                        as: upcomingSession.as,
-                        id: upcomingSession.id
                     }} />
                 </li>
             {/each}
