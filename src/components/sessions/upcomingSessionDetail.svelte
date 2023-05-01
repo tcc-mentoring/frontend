@@ -5,29 +5,22 @@
     export let sessionDetails: {
         date: string,
         withName: string,
-        score: number,
-        details: string,
         id: number,
         as: string
     };
 </script>
 
 <style>
-    .finishedSessionDetail > .grid:first-child {
+    .upcomingSessionDetail > .grid:first-child {
         margin-bottom: 20px;
     }
 </style>
 
-<div class="finishedSessionDetail">
+<div class="upcomingSessionDetail">
     <div class="grid">
         <TextGroup identifier="session-date" labelSlug="sessionDate" text={sessionDetails.date}/>
         <TextGroup identifier="session-mentor" labelSlug={`session.as.${sessionDetails.as}`} text={sessionDetails.withName} />
     </div>
-    <div class="grid">
-        <TextGroup identifier="session-review-score" labelSlug="sessionReviewScore" text={sessionDetails.score.toString()} />
-        <TextGroup identifier="session-review-details" labelSlug="sessionReviewDetails" text={sessionDetails.details} />
-    </div>
-
     <button type="button" class="outline" on:click={() => {
         window.location.href =  `/sessions/${sessionDetails.id}`;
     }}>{$_("openSessionDetails")}</button>

@@ -5,6 +5,7 @@
 	import FinishedSessionDetail from '../../components/sessions/finishedSessionDetail.svelte';
 	import SessionToReviewDetail from '../../components/sessions/sessionToReviewDetail.svelte';
 	import type { PageData } from './$types';
+	import UpcomingSessionDetail from '../../components/sessions/upcomingSessionDetail.svelte';
     
     export let data: PageData;
 </script>
@@ -24,10 +25,32 @@
 <article class="sessionsContainer">
     <details>
         <summary>
-            {$_("sessionsToReview", {values: {length: data.pastSessions.sessionsToReview?.length}})}
+            {$_("upcomingSessions", {values: {length: data.sessions.upcomingSessions?.length}})}
+        </summary>
+
+        <ul id="upcomingSessionsContainer">
+            {#each data.sessions.upcomingSessions as upcomingSession }
+                <li class="sessionDetails">
+                    <UpcomingSessionDetail sessionDetails={{
+                        date: moment.utc(upcomingSession.startDateTime).format("DD/MM/YYYY HH:mm"),
+                        withName: `${upcomingSession.with.firstName} ${upcomingSession.with.lastName}`,
+                        as: upcomingSession.as,
+                        id: upcomingSession.id
+                    }} />
+                </li>
+            {/each}
+        </ul>
+
+    </details>
+</article>
+
+<article class="sessionsContainer">
+    <details>
+        <summary>
+            {$_("sessionsToReview", {values: {length: data.sessions.sessionsToReview?.length}})}
         </summary>
         <ul id="sessionsToReviewContainer">
-            {#each data.pastSessions.sessionsToReview as sessionToReview }
+            {#each data.sessions.sessionsToReview as sessionToReview }
                 <li class="sessionDetails">
                     <SessionToReviewDetail sessionDetails={{
                             date: moment.utc(sessionToReview.startDateTime).format("DD/MM/YYYY HH:mm"),
@@ -43,18 +66,19 @@
 <article class="sessionsContainer">
     <details>
         <summary>
-            {$_("finishedSessions", {values: {length: data.pastSessions.finishedSessions?.length}})}
+            {$_("finishedSessions", {values: {length: data.sessions.finishedSessions?.length}})}
         </summary>
 
         <ul id="finishedSessionsContainer">
-            {#each data.pastSessions.finishedSessions as finishedSession }
+            {#each data.sessions.finishedSessions as finishedSession }
                 <li class="sessionDetails">
                     <FinishedSessionDetail sessionDetails={{
                         date: moment.utc(finishedSession.startDateTime).format("DD/MM/YYYY HH:mm"),
-                        mentorName: `${finishedSession.with.firstName} ${finishedSession.with.lastName}`,
+                        withName: `${finishedSession.with.firstName} ${finishedSession.with.lastName}`,
                         score: finishedSession.score,
                         details: finishedSession.details,
-                        id: finishedSession.id
+                        id: finishedSession.id,
+                        as: finishedSession.as
                     }} />
                 </li>
             {/each}

@@ -24,12 +24,13 @@ interface Session {
 
 
 export const load: PageServerLoad = async ({fetch, depends}) => {
-    let pastSessions = {
+    let sessions = {
         sessionsToReview: [] as Session[],
-        finishedSessions: [] as Session[]
+        finishedSessions: [] as Session[],
+        upcomingSessions: [] as Session[],
     };
 
-    const fetchPastSessions = await fetch(`${BACKEND}schedule/mentee-past-sessions`, {
+    const fetchPastSessions = await fetch(`${BACKEND}schedule/sessions`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
@@ -40,10 +41,10 @@ export const load: PageServerLoad = async ({fetch, depends}) => {
 
 
     if (fetchPastSessions.ok) {
-        pastSessions = await fetchPastSessions.json();
+        sessions = await fetchPastSessions.json();
     }
 
-    return {pastSessions};
+    return {sessions};
 };
 
 export const actions: Actions = {
