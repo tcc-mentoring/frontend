@@ -29,7 +29,7 @@
 </style>
 
 {#if mentorNotRegistered}
-Para se disponibilizar como pessoa mentora, <a href="/mentor-profile">crie seu perfil em "Perfil de Mentor".</a>
+{$_("availableMentor")} <a href="/mentor-profile">{$_("createMentorProfileHint")}</a>
 {/if}
 <section class="mentor-profiles">
     {#each mentorProfiles as mentorProfile}

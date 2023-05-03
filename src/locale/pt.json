@@ -118,5 +118,7 @@
     "mentorsHelped": "Pessoas mentoras que participaram:",
     "knowledgeArea": "Área de conhecimento:",
     "description": "Descrição:",
-    "updatedNotes": "Notas Atualizadas!"
+    "updatedNotes": "Notas Atualizadas!",
+    "availableMentor": "Para se disponibilizar como pessoa mentora,",
+    "createMentorProfileHint": "crie seu perfil."
 }
