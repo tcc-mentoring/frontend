@@ -12,12 +12,21 @@ export const load: PageServerLoad = async ({fetch}) => {
         }
     });
 
+    const fetchUserMentorProfile = await fetch(`${BACKEND}mentor-profile/user`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
 
     if (fetchMentorProfiles.ok) {
         mentorProfiles = await fetchMentorProfiles.json();
     }
 
-    return {mentorProfiles};
+    return {
+        mentorProfiles,
+        mentorNotRegistered: !fetchUserMentorProfile.ok
+    };
 };
 
 export const actions: Actions = {
