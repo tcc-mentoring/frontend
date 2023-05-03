@@ -35,7 +35,7 @@
     })
   </script>
   
-  {#if editor}
+  {#if editor && editable}
     <div class="tiptap-toolbar">
       <div class="headings">
         <button
