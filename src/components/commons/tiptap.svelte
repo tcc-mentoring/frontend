@@ -22,7 +22,6 @@
           editor = editor
         },
         onUpdate: ((props: {editor: Editor}) => {
-            console.log({props})
             startContent = props.editor.getHTML() ?? "";
         })
       })
