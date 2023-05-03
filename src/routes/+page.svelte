@@ -11,7 +11,7 @@
 
     const SCHEDULE_SESSION_DIALOG_ID = "scheduleSessionDialog";
 
-    let {mentorProfiles} = data;
+    let {mentorProfiles, mentorNotRegistered} = data;
     let mentorProfileToSchedule: MentorProfile = {} as MentorProfile;
 
     let openScheduleSessionDialog = (mentorProfile: MentorProfile) => {
@@ -28,11 +28,13 @@
     }
 </style>
 
+{#if mentorNotRegistered}
+Para se disponibilizar como pessoa mentora, <a href="/mentor-profile">crie seu perfil em "Perfil de Mentor".</a>
+{/if}
 <section class="mentor-profiles">
     {#each mentorProfiles as mentorProfile}
         <MentorCard {mentorProfile} onScheduleClick={openScheduleSessionDialog}/>
     {/each}
-
     <dialog id={SCHEDULE_SESSION_DIALOG_ID}>
         {#if !!mentorProfileToSchedule && !!mentorProfileToSchedule.user}
             <form action="?/scheduleSession" method="POST" use:enhance>
