@@ -1,7 +1,8 @@
 <script>
 	import { page } from '$app/stores';
     import '@picocss/pico/css/pico.css';
-    
+    import { SvelteToast } from '@zerodevx/svelte-toast'
+
 
     import { addMessages, init } from 'svelte-i18n';
 	import Navbar from '../components/navbar/navbar.svelte';
@@ -27,3 +28,4 @@
 <div class="layout-content">
     <slot></slot>
 </div>
+<SvelteToast />
