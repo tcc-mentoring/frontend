@@ -21,6 +21,7 @@
 		"@sveltejs/kit": "^1.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
+		"@zerodevx/svelte-toast": "^0.9.3",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -36,9 +37,11 @@
 	"type": "module",
 	"dependencies": {
 		"@picocss/pico": "^1.5.7",
+		"@tiptap/core": "^2.0.3",
+		"@tiptap/pm": "^2.0.3",
+		"@tiptap/starter-kit": "^2.0.3",
 		"moment": "^2.29.4",
 		"svelte-i18n": "^3.6.0",
-		"svelte-quill": "^1.2.0",
 		"svelte-tags-input": "^4.0.0"
 	}
 }
