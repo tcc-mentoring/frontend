@@ -7,6 +7,7 @@
 	import SessionInformationDetail from './sessionInformationDetail.svelte';
 
 	export let sessionDetails: {
+		as: "mentor" | "mentee";
 		date: string;
 		mentorName: string;
 		id: number;

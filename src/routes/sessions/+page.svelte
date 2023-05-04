@@ -53,6 +53,7 @@
             {#each data.sessions.sessionsToReview as sessionToReview }
                 <li class="sessionDetails">
                     <SessionToReviewDetail sessionDetails={{
+                            as: "mentee",
                             date: moment.utc(sessionToReview.startDateTime).format("DD/MM/YYYY HH:mm"),
                             mentorName: `${sessionToReview.with.firstName} ${sessionToReview.with.lastName}`,
                             id: sessionToReview.id
