@@ -57,7 +57,7 @@
                             date: moment.utc(sessionToReview.startDateTime).format("DD/MM/YYYY HH:mm"),
                             mentorName: `${sessionToReview.with.firstName} ${sessionToReview.with.lastName}`,
                             id: sessionToReview.id
-                        }}/>
+                        }} withDetailsLink />
                 </li>
             {/each}
         </ul>
@@ -79,8 +79,8 @@
                         score: finishedSession.score,
                         details: finishedSession.details,
                         id: finishedSession.id,
-                        as: finishedSession.as
-                    }} />
+                        as: finishedSession.as,
+                    }} withDetail />
                 </li>
             {/each}
         </ul>
