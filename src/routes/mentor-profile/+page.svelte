@@ -67,7 +67,7 @@
 
                 <input type="hidden" bind:value={specialties} name="specialties-value">
                     
-                <button class="submit-profile-information" type="submit">{$_("saveOcupation")}</button>
+                <button class="submit-profile-information" type="submit">{$_("saveMentorProfile")}</button>
 
             </form>
         {:else}
