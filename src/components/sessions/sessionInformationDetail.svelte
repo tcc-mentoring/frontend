@@ -4,13 +4,14 @@
     export let sessionDetails: {
 		date: string;
 		mentorName: string;
+        as: "mentor" | "mentee"
     };
 </script>
 <div class="grid">
     <TextGroup identifier="session-date" labelSlug="sessionDate" text={sessionDetails.date} />
     <TextGroup
         identifier="session-mentor"
-        labelSlug="sessionsMentor"
+        labelSlug={sessionDetails.as === "mentee" ? "sessionsMentor" : "sessionsMentee"}
         text={sessionDetails.mentorName}
     />
 </div>

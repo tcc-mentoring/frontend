@@ -120,5 +120,8 @@
     "description": "Descrição:",
     "updatedNotes": "Notas Atualizadas!",
     "availableMentor": "Para se disponibilizar como pessoa mentora,",
-    "createMentorProfileHint": "crie seu perfil."
+    "createMentorProfileHint": "crie seu perfil.",
+    "sessionsMentor": "Pessoa mentora da sessão:",
+    "sessionsMentee": "Pessoa mentorada da sessão.",
+    "saveMentorProfile": "Salvar perfil de mentor"
 }
