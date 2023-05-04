@@ -1,7 +1,7 @@
 import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "../$types";
 import { BACKEND } from "$env/static/private";
-import { reviewSessionAction } from "../../../utils/session";
+import { reviewSessionAction } from "../../../utils/sessionAction";
 
 export const load: PageServerLoad = async ({params, fetch, locals, depends}) => {
     if (!locals.user) {
