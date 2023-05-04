@@ -7,10 +7,13 @@
 	import SessionInformationDetail from './sessionInformationDetail.svelte';
 
 	export let sessionDetails: {
+		as: "mentor" | "mentee";
 		date: string;
 		mentorName: string;
 		id: number;
 	};
+
+	export let withDetailsLink = false;
 </script>
 
 <div class="sessionToReviewDetail">
@@ -49,9 +52,11 @@
 		<input type="hidden" name="scheduleId" value={sessionDetails.id} />
 		<div class="grid">
 			<button type="submit">{$_('submitReview')}</button>
-			<button type="button" class="outline" on:click={() => {
-				window.location.href =  `/sessions/${sessionDetails.id}`;
-			}}>{$_("openSessionDetails")}</button>
+			{#if withDetailsLink}
+				<button type="button" class="outline" on:click={() => {
+					window.location.href =  `/sessions/${sessionDetails.id}`;
+				}}>{$_("openSessionDetails")}</button>
+			{/if}
 		</div>
 	</form>
 </div>

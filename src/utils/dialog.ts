@@ -11,3 +11,7 @@ export function closeDialog (dialog: string) {
         dialogObject.setAttribute("open", "false");
     }   
 }
+
+export function closeMenuDialog() {
+    document.getElementById("main-menu")?.removeAttribute("open");
+}

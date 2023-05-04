@@ -53,7 +53,7 @@
                     {$_("sessionDetails")}
                 </header>
 
-                <SessionInformationDetail sessionDetails={{date: moment.utc(selectedSession.startDateTime).format("DD/MM/YYYY HH:mm"), mentorName: selectedSession.with.firstName}}/>
+                <SessionInformationDetail sessionDetails={{date: moment.utc(selectedSession.startDateTime).format("DD/MM/YYYY HH:mm"), mentorName: selectedSession.with.firstName, as: selectedSession.as}}/>
                 <footer>
                     <button type="button" on:click={() => {
                         window.location.href = `/sessions/${selectedSession.id}`
