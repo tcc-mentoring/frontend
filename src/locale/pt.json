@@ -90,7 +90,7 @@
     "manageSession": "Gerenciar Sessão",
     "isMentoring": "{mentor} está mentorando {mentee}",
     "insertMentorNotes": "Insira suas notas sobre a mentoria...",
-    "mentorNotes": "Notas da pessoa mentora:",
+    "mentorNotes": "Notas da pessoa mentora sobre a sessão:",
     "updateMentorNotes": "Atualizar notas da mentoria",
     "cancel": "Cancelar",
     "openSessionDetails": "Abrir detalhes da sessão",
