@@ -1,6 +1,7 @@
 import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "../$types";
 import { BACKEND } from "$env/static/private";
+import { reviewSessionAction } from "../../../utils/session";
 
 export const load: PageServerLoad = async ({params, fetch, locals, depends}) => {
     if (!locals.user) {
@@ -43,5 +44,6 @@ export const actions: Actions = {
         return {
             success: true
         }
-    }
+    },
+    reviewSession: reviewSessionAction
 };
