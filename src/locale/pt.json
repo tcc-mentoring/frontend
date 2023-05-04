@@ -80,7 +80,7 @@
     "sessionDate": "Data da Sessão:",
     "session.as.mentor": "Pessoa mentorada:",    
     "session.as.mentee": "Pessoa mentora:",
-    "sessionReviewScore": "Avaliação da sessão:",
+    "sessionReviewScore": "Avaliação da sessão (1 a 10):",
     "sessionReviewDetails": "Detalhes da avaliação:",
     "submitReview": "Enviar avaliação",
     "sessions": "Sessões",
@@ -123,5 +123,6 @@
     "createMentorProfileHint": "crie seu perfil.",
     "sessionsMentor": "Pessoa mentora da sessão:",
     "sessionsMentee": "Pessoa mentorada da sessão.",
-    "saveMentorProfile": "Salvar perfil de mentor"
+    "saveMentorProfile": "Salvar perfil de mentor",
+    "notYetEvaluated": "Ainda não foi avaliado"
 }
