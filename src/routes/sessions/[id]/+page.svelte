@@ -13,7 +13,7 @@
 
     export let data: PageData;
     export let editedValue = data.session.mentorNotes;
-    console.log({data})
+    
     let isMentor = $page.data.user.email === data.session.mentor.email;
 </script>
 
