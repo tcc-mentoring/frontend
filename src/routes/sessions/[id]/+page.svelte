@@ -41,7 +41,6 @@
             <form id="update-mentor-notes-form" action="?/updateMentorNotes" method="POST" use:enhance={() => {
                 return  ({ result, update }) => {
                     if(result.type === "success") {
-                        console.log("test")
                         invalidate('app:session');
                         toast.push($_("updatedNotes"))
                     } else {
