@@ -28,12 +28,6 @@ export const actions: Actions = {
         const achievedDate = formData.get("achievedDate");
         const description = formData.get("description");
         const mentorsParticipated = formData.get("mentorsParticipatedValue");
-        console.log({
-            achievedDate,
-            description,
-            mentorsParticipated
-        })
-
         try {
 
             await fetch(`${BACKEND}achievements/new`, {
