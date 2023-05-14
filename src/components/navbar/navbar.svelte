@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
     import { _ } from 'svelte-i18n'
+	import { closeMenuDialog } from '../../utils/dialog';
 </script>
 
 <style>
@@ -31,7 +32,7 @@
     
     <ul>
         <li>
-            <details role="list" dir="rtl">
+            <details role="list" dir="rtl" id="main-menu">
                 <summary aria-haspopup="listbox" role="link" class="secondary">{$_("menu")}</summary>
                 <ul role="listbox">
                     {#if $page.data.user}
@@ -41,19 +42,19 @@
                             </h6>
                         </li>
                         <li>
-                            <a href="/mentor-profile">{$_("mentorProfile")}</a>
+                            <a on:click={closeMenuDialog} href="/mentor-profile">{$_("mentorProfile")}</a>
                         </li>
                         <li>
-                            <a href="/profile">{$_("profile")}</a>
+                            <a on:click={closeMenuDialog}  href="/profile">{$_("profile")}</a>
                         </li>
                         <li>
-                            <a href="/calendar">{$_("calendar")}</a>
+                            <a on:click={closeMenuDialog}  href="/calendar">{$_("calendar")}</a>
                         </li>
                         <li>
-                            <a href="/sessions">{$_("sessions")}</a>
+                            <a on:click={closeMenuDialog}  href="/sessions">{$_("sessions")}</a>
                         </li>
                         <li>
-                            <a href="/achievements">{$_("achievements")}</a>
+                            <a on:click={closeMenuDialog}  href="/achievements">{$_("achievements")}</a>
                         </li>
                         <li>
                             <form action="/logout" method="POST" class="inline-form-action">
@@ -62,10 +63,10 @@
                         </li>
                     {:else}
                         <li>
-                            <a href="/register">{$_("createUser")}</a>
+                            <a on:click={closeMenuDialog}  href="/register">{$_("createUser")}</a>
                         </li>
                         <li>
-                            <a href="/login">{$_("login")}</a>
+                            <a on:click={closeMenuDialog}  href="/login">{$_("login")}</a>
                         </li>
                     {/if}
                 </ul>

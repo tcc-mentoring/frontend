@@ -10,6 +10,8 @@
         id: number,
         as: string
     };
+
+    export let withDetail = false;
 </script>
 
 <style>
@@ -24,11 +26,13 @@
         <TextGroup identifier="session-mentor" labelSlug={`session.as.${sessionDetails.as}`} text={sessionDetails.withName} />
     </div>
     <div class="grid">
-        <TextGroup identifier="session-review-score" labelSlug="sessionReviewScore" text={sessionDetails.score.toString()} />
-        <TextGroup identifier="session-review-details" labelSlug="sessionReviewDetails" text={sessionDetails.details} />
+        <TextGroup identifier="session-review-score" labelSlug="sessionReviewScore" text={sessionDetails.score ? sessionDetails.score.toString() : $_("notYetEvaluated")} />
+        <TextGroup identifier="session-review-details" labelSlug="sessionReviewDetails" text={sessionDetails.details ?? ""} />
     </div>
 
-    <button type="button" class="outline" on:click={() => {
-        window.location.href =  `/sessions/${sessionDetails.id}`;
-    }}>{$_("openSessionDetails")}</button>
+    {#if withDetail}    
+        <button type="button" class="outline" on:click={() => {
+            window.location.href =  `/sessions/${sessionDetails.id}`;
+        }}>{$_("openSessionDetails")}</button>
+    {/if}
 </div>

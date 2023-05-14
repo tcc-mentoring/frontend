@@ -18,11 +18,9 @@
         ],
         content: startContent,
         onTransaction: () => {
-          // force re-render so `editor.isActive` works as expected
           editor = editor
         },
         onUpdate: ((props: {editor: Editor}) => {
-            console.log({props})
             startContent = props.editor.getHTML() ?? "";
         })
       })

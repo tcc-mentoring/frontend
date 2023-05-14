@@ -22,11 +22,6 @@
 </script>
 
 <style>
-    #createAchievementDialogContainer {
-        min-width: 800px;
-        max-width: 100%;
-    }
-
     .form-group {
         margin-bottom: var(--spacing)
     }

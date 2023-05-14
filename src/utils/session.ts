@@ -10,4 +10,3 @@ export function sessionMapToCalendar(session: SessionDTO, role: string, title: s
         extendedProps: session
     }
 }
-    
