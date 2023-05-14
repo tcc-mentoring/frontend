@@ -46,7 +46,7 @@
                     </header>
 
                     <input type="hidden" name="menthorEmail" bind:value={mentorProfileToSchedule.user.email}>
-                    <FormGroup labelSlug="scheduleSession.date" name="startDatetime" type="datetime-local" extraProperties={{step: (60*30)}}/>
+                    <FormGroup labelSlug="scheduleSession.date" name="startDatetime" type="datetime-local" />
 
                     <footer>
                         <button type="submit">{$_("send")}</button>
